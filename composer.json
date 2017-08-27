@@ -1,0 +1,23 @@
+{
+    "name": "codeurx/minecms",
+    "description": "A Powerfull CMS Build on top of Symfony2 Components",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amir Ali Salah",
+            "email": "codeurx@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CMS\\": "Core/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/yaml": "^3.3",
+        "symfony/debug": "^3.3",
+        "webmozart/path-util": "^2.3"
+    }
+}

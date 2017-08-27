@@ -1,0 +1,9 @@
+Plugins:
+    - FolderName: Search
+      title: Search Plugin.
+      version: '1.0'
+      author: Amir Ali Salah <codeurx@gmail.com>
+    - FolderName: Rate
+      title: Rate Plugin.
+      version : '1.0'
+      author: Amir Ali Salah <codeurx@gmail.com>

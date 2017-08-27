@@ -1,0 +1,6 @@
+database:
+    driver: mysql
+    databasename: minescms
+    host: localhost
+    username: root
+    password: root

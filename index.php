@@ -7,6 +7,10 @@
  */
 
 require 'vendor/autoload.php';
-use CMS\Application as App;
-$app = new App(realpath(__DIR__));
-$app->start();
+//use CMS\Application as App;
+//$app = new App(realpath(__DIR__));
+//$app->start();
+
+$router = new Gears\Router();
+$router->routesPath = 'Core/routes.php';
+$router->dispatch();

@@ -11,7 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "CMS\\": "Core/"
+            "CMS\\": "Core/",
+            "Gears\\": "Core/router-master/src/"
         }
     },
     "minimum-stability": "stable",
@@ -19,6 +20,9 @@
         "php": "^5.3.3 || ^7.0",
         "symfony/yaml": "^3.3",
         "symfony/debug": "^3.3",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "gears/di": "^0.2.1",
+        "illuminate/events": "^5.4",
+        "illuminate/routing": "^5.4"
     }
 }

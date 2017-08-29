@@ -9,9 +9,8 @@
 namespace CMS;
 
 use Symfony\Component\Yaml\Yaml as Yml;
-
-class Bootstrap
-{
+use CMS\Route as Route;
+class Bootstrap {
     public function InitPlugins($Path) {
         $plugins = Yml::parse(file_get_contents($Path.'/Plugins/Plugins.yml'));
         foreach ($plugins as $plugin){
@@ -20,5 +19,10 @@ class Bootstrap
                 require $Path.'/Plugins/'.$p['FolderName'].'/autoload.php';
             }
         }
+    }
+
+    public function GetRoute()
+    {
+        new Route();
     }
 }

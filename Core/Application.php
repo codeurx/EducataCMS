@@ -45,5 +45,6 @@ class Application
     public function start(){
         $bootstrap = new Bootstrap();
         $bootstrap->InitPlugins($this->Path);
+        $bootstrap->GetRoute();
     }
 }

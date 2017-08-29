@@ -10,4 +10,3 @@ require 'vendor/autoload.php';
 use CMS\Application as App;
 $app = new App(realpath(__DIR__));
 $app->start();
-

@@ -9,8 +9,10 @@
 namespace CMS;
 
 use Symfony\Component\Yaml\Yaml as Yml;
-use CMS\Route as Route;
+use CMS\Routing as Routing;
+
 class Bootstrap {
+
     public function InitPlugins($Path) {
         $plugins = Yml::parse(file_get_contents($Path.'/Plugins/Plugins.yml'));
         foreach ($plugins as $plugin){
@@ -23,6 +25,6 @@ class Bootstrap {
 
     public function GetRoute()
     {
-        new Route();
+        new Routing();
     }
 }

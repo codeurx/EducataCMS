@@ -10,14 +10,15 @@ namespace CMS;
 
 use CMS\Database as Database;
 use CMS\Bootstrap as Bootstrap;
+use Symfony\Component\Debug\Debug;
 use Webmozart\PathUtil\Path as Path;
+use Symfony\Component\Debug\Debug as Debugger;
 
 /**
  * Class Application
  * @package CMS
  */
-class Application
-{
+class Application {
     /**
      * @var \CMS\Database
      */
@@ -34,7 +35,7 @@ class Application
     public function __construct($Path)
     {
         $this->Path = Path::canonicalize($Path);
-        \Symfony\Component\Debug\Debug::enable();
+        Debugger::enable();
         $this->database = new Database($this->Path);
         return $this->database;
     }

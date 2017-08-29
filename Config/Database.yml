@@ -3,4 +3,4 @@ database:
     databasename: minescms
     host: localhost
     username: root
-    password: root
+    password:

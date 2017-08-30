@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 class PagesController {
 
     public function index($id,$title){
-        return 'ID : '.$id.' Title : '.$title;
+        echo 'page';
     }
 }

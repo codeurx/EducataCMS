@@ -18,7 +18,7 @@ use Symfony\Component\Debug\Debug as Debugger;
  * Class Application
  * @package CMS
  */
-class Application {
+class Application extends Bootstrap{
     /**
      * @var \CMS\Database
      */

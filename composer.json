@@ -11,6 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
+            "Autoload\\": "vendor/",
             "CMS\\": "Core/"
         }
     },

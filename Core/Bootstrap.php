@@ -25,6 +25,6 @@ class Bootstrap {
 
     public function GetRoute()
     {
-        new Routing();
+        new Routing($_GET['url']);
     }
 }

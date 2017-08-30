@@ -10,8 +10,16 @@ session_start();
 
 require_once 'vendor/autoload.php';
 
-use CMS\Application as App;
+use CMS\Application;
 
-$app = new App(realpath(__DIR__));
+$app = new Application(realpath(__DIR__));
 
 $app->start();
+
+
+$container = new Illuminate\Container\Container;
+
+// Bind a "template" class to the container
+$container->bind(CMS\ParentClass::class, CMS\ChildClass::class);
+$container->make(CMS\ParentClass::class)->somethingToDo();
+echo $container;

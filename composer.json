@@ -11,7 +11,6 @@
     ],
     "autoload": {
         "psr-4": {
-            "Autoload\\": "vendor/",
             "CMS\\": "Core/"
         }
     },
@@ -23,6 +22,7 @@
       "webmozart/path-util": "^2.3",
       "illuminate/events": "^5.4",
       "illuminate/support": "^5.4",
-      "illuminate/routing": "^5.4"
+      "illuminate/routing": "^5.4",
+      "illuminate/database": "^5.5"
     }
 }

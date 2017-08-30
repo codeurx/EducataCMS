@@ -8,21 +8,16 @@
 
 namespace CMS;
 
-use CMS\Database as Database;
-use CMS\Bootstrap as Bootstrap;
+use CMS\Bootstrap;
 use Symfony\Component\Debug\Debug;
-use Webmozart\PathUtil\Path as Path;
-use Symfony\Component\Debug\Debug as Debugger;
+use Webmozart\PathUtil\Path;
+use Illuminate\Container\Container;
 
 /**
  * Class Application
  * @package CMS
  */
 class Application extends Bootstrap{
-    /**
-     * @var \CMS\Database
-     */
-    private $database;
     /**
      * @var string
      */
@@ -35,9 +30,7 @@ class Application extends Bootstrap{
     public function __construct($Path)
     {
         $this->Path = Path::canonicalize($Path);
-        Debugger::enable();
-        $this->database = new Database($this->Path);
-        return $this->database;
+        Debug::enable();
     }
 
     /**

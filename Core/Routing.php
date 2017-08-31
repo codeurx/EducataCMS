@@ -8,31 +8,29 @@
 
 namespace CMS;
 
-use Illuminate\Container\Container;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Symfony\Component\Yaml\Yaml as Yml;
 
 class Routing {
     public function __construct($url){
-        $url_slug = $this->LoadSettings()['url_slug'];
+        new Database();
+        $url_slug = $this->LoadUrlSettings()['url_slug'];
         $requested_url = explode('/', $url);
         $url_length = count($requested_url);
         $liste_urls = array('Page'.$url_slug,'Article'.$url_slug,'Categorie'.$url_slug,'Cours'.$url_slug,'Nous-Contacter'.$url_slug);
-        $events     = new Dispatcher(new Container);
+        $events     = new EventsLoader();
         $router     = new Router($events);
         $routeMiddleware = [
-            'auth'  => \CMS\Middleware\Authenticate::class,
-            'guest' => \CMS\Middleware\RedirectIfAuthenticated::class,
+            'Admin'  => \CMS\Middleware\Admin::class,
         ];
         foreach ($routeMiddleware as $key => $middleware) {
             $router->aliasMiddleware($key, $middleware);
         }
-        if ((in_array(end($requested_url),$requested_url) == 1)&&($url_length == 3)){
+        if ((in_array(end($requested_url),$liste_urls) == 1)&&($url_length == 3)){
             if (end($requested_url)=='Page'.$url_slug){
                 $router->group(['namespace' => 'CMS\Controllers', 'prefix' => '/{id}/{title}/Page'.$url_slug], function (Router $router) {
-                    $router->get('/', ['name' => 'page.index', 'uses' => 'PagesController@index']);
+                    $router->get('/', ['name' => 'page.GetPage', 'uses' => 'PagesController@GetPage']);
                 });
             }else if (end($requested_url)=='Article.Edu'){
                 echo 'load Post Controller';
@@ -42,16 +40,34 @@ class Routing {
                 echo 'load Courses Controller';
             }
         }
-        $router->get('/', function () {
-            return 'Home Page!';
-        });
-        $request = Request::capture();
+        if ($requested_url[0]=='Admin'){
+            if (isset($_SESSION['admin'])){
+                $router->group(['middleware' => 'Admin'], function (Router $router) {
+                    $router->get('Admin', function () {
+                        return 'Welcome admin!';
+                    });
+                    $router->get('Admin/Logout', function () {
+                        unset($_SESSION['admin']);
+                       return header('Location:Admin');
+                    });
+                });
+            }else{
+                $router->get('Admin', function () {
+                    return 'Login Page Here! <a href="submitlogin">Connect Now!</a>';
+                });
+                $router->get('Admin/submitlogin', function () {
+                    $_SESSION['admin'] = true;
+                    return header('Location:Admin');
+                });
+            }
+        }
+        $request  = Request::capture();
         $response = $router->dispatch($request);
         $response->send();
     }
 
-    public function LoadSettings()
+    public function LoadUrlSettings()
     {
-        return $settings = Yml::parse(file_get_contents('Config/Settings.yml'));
+        return Yml::parse(file_get_contents('Config/Settings.yml'));
     }
 }

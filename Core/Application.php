@@ -13,29 +13,18 @@ use Symfony\Component\Debug\Debug;
 use Webmozart\PathUtil\Path;
 use Illuminate\Container\Container;
 
-/**
- * Class Application
- * @package CMS
- */
+
 class Application extends Bootstrap{
-    /**
-     * @var string
-     */
+
     private $Path;
 
-    /**
-     * Application constructor.
-     * @param $Path
-     */
     public function __construct($Path)
     {
+        new Database();
         $this->Path = Path::canonicalize($Path);
         Debug::enable();
     }
 
-    /**
-     *
-     */
     public function start(){
         $bootstrap = new Bootstrap();
         $bootstrap->InitPlugins($this->Path);

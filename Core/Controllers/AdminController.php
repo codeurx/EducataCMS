@@ -9,5 +9,8 @@
 namespace CMS\Controllers;
 
 class AdminController {
-
+    public function index()
+    {
+        echo 'test';
+    }
 }

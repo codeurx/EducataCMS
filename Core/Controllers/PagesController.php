@@ -8,11 +8,14 @@
 
 namespace CMS\Controllers;
 
-use Illuminate\Http\Request;
+use CMS\Models\Page;
+use CMS\View;
 
-class PagesController {
+class PagesController extends View {
 
-    public function index($id,$title){
-        echo 'page';
+    public function GetPage($id,$title){
+        $title = str_replace('-',' ',$title);
+        $page  =  Page::GetPage($id,$title);
+        return $this->make('Page.content', ['title'=>$title,'page' => $page]);
     }
 }

@@ -8,13 +8,15 @@
 
 namespace CMS;
 
-use Symfony\Component\Yaml\Yaml as Yml;
-use CMS\Routing as Routing;
+use Philo\Blade\Blade;
+use Symfony\Component\Yaml\Yaml;
+use CMS\Routing;
+use CMS\Database;
 
 class Bootstrap {
 
     public function InitPlugins($Path) {
-        $plugins = Yml::parse(file_get_contents($Path.'/Plugins/Plugins.yml'));
+        $plugins = Yaml::parse(file_get_contents($Path.'/Plugins/Plugins.yml'));
         foreach ($plugins as $plugin){
             foreach ($plugin as $p){
                 //TODO compare the version of the plugin with cms's version

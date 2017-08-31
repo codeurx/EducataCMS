@@ -10,10 +10,10 @@ namespace CMS\Middleware;
 
 use Closure;
 
-class Authenticate {
+class Admin{
     public function handle($request, Closure $next, $guard = null){
-        if (!isset($_SESSION['user'])) {
-            return 'Error Authenticate. Please <a href="/login">login</a>';
+        if (!isset($_SESSION['admin'])) {
+            header('Location:Admin/Login');
         }
         return $next($request);
     }

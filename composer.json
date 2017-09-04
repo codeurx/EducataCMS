@@ -16,13 +16,14 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "php": "^5.3.3 || ^7.0",
-    "symfony/yaml": "^3.3",
-    "symfony/debug": "^3.3",
-    "webmozart/path-util": "^2.3",
-    "illuminate/events": "^5.4",
-    "illuminate/support": "^5.4",
-    "illuminate/routing": "^5.4",
-    "illuminate/database": "^5.5"
+    "php": "~5.3.3 || ~7.0",
+    "symfony/yaml": "~3.3",
+    "symfony/debug": "~3.3",
+    "webmozart/path-util": "~2.3",
+    "illuminate/events": "~5.4",
+    "illuminate/support": "~5.4",
+    "illuminate/routing": "~5.4",
+    "illuminate/database": "~5.5",
+    "illuminate/view": "~5.5"
   }
 }

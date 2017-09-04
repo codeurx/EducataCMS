@@ -14,6 +14,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\ViewServiceProvider;
 
+
 class View{
 
     protected $container;

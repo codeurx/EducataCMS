@@ -8,9 +8,12 @@
 
 namespace CMS\Controllers;
 
+use Illuminate\Routing\Redirector as Redirector;
+use Illuminate\Support\Facades\Redirect;
 class AdminController {
-    public function index()
+    public function login()
     {
-        echo 'test';
+        $_SESSION['admin'] = true;
+        return Redirect::to('profile', []);
     }
 }

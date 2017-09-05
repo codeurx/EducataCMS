@@ -53,11 +53,13 @@ class Routing {
                 });
             }else{
                 $router->get('Admin', function () {
-                    return 'Login Page Here! <a href="submitlogin">Connect Now!</a>';
+                    return 'Login Page Here!';
                 });
-                $router->get('Admin/submitlogin', function () {
-                    $_SESSION['admin'] = true;
-                    return header('Location:Admin');
+                $router->group(['namespace' => 'CMS\Controllers', 'prefix' => 'Admin'], function (Router $router) {
+                    $router->get('/Login', ['name' => 'Admin.login', 'uses' => 'AdminController@login']);
+                    $router->get('/', function () {
+                        return 'Login Page Here!';
+                    });
                 });
             }
         }
